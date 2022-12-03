@@ -1,17 +1,277 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>QuadStream Website</title>
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    <main>
-        <h1>QS website work in progress</h1>
-		<a href="https://media.githubusercontent.com/media/jozefhladky/webresources_qs/main/quadstream_main.pdf">PDF</a>
-    </main>
-	<script src="index.js"></script>
-  </body>
+	
+<head>
+
+    <meta charset="utf-8">
+	
+	<title>QuadStream</title>
+	
+	<script src="app/jquery-2.1.1.min.js"></script>
+	<script src="app/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="app/app.css" />
+	<link rel="stylesheet" type="text/css" href="css/fontello.css" />
+	<style type="text/css" media="screen">
+	
+	
+	
+	
+		body {
+			font-family: 'Open Sans', sans-serif;
+			color: #222;
+		}
+		
+		h1, h2, h3, h4, p#authors, p#affiliation {
+			font-family: 'Roboto', sans-serif;			
+		}
+		
+		a {
+			color: rgb(101, 124, 157);
+			text-decoration: none;
+		}
+				
+		a:hover {
+			text-decoration: underline;
+		}
+		
+		ul {
+			list-style-type: none;
+			padding-left: 1em;
+		}
+		
+		p {
+			text-align: justify
+		}
+		
+		code {
+			font-family: 'Roboto Mono', monospace;
+		}
+		
+		pre {
+			background-color: #f0f0f6;
+			padding: 1em;
+		}
+		
+		h1, h2, h3, h4 {
+			font-weight: 700;
+		}
+		
+		h2 {
+			margin-top: 1.5em;
+			margin-bottom: 0.5em;
+		}
+		
+		h3 {
+			margin-top: 1.0em;
+			margin-bottom: 0.5em;
+		}
+		
+		h4 {
+			margin-top: 1.0em;
+			margin-bottom: 0.2em;
+		}
+		
+		h1.project-name, p#authors {
+			margin-bottom: -0.5em;
+		}
+		
+		h1.project-name, h2.project-name, p#authors, p#affiliation, p#footer {
+			text-align:center;
+		}
+		
+		
+		h2.project-name {
+			font-weight: 300;
+		}
+		
+
+		.projectPageIcon {
+			margin: 0.2em 0.2em 0 1em !important;
+		}
+
+		.linkIcon {
+			float: none !important;
+			width: 1em;
+			height: 1em;
+		}
+
+		.pdfIcon {
+			margin: 0.2em 0.2em 0 0 !important;
+		}
+
+		.file-icon {
+			width: 2em;
+			height: 2em;
+			background-size: 2em 2em;
+			margin: auto 0;
+		}
+
+		.download-scene {
+			width:calc(50% - 0.5em);
+			margin-right: 1em;
+			margin-bottom: 1em;
+		}
+		
+		.download-scene:nth-child(even) {
+			margin-right: 0;
+		}
+				
+		div#content-wrapper {
+			width: 68%;
+			max-width: 56em;
+			margin: auto;
+		}
+		
+		img#teaser {
+			width: 100%;
+			margin-top: 1em;
+		}
+				
+		img.logo1 {
+			width: 40%;
+			display: inline;
+		}
+		img.logo2 {
+			width: 30%;
+			margin-left: 14em;
+			display: inline;
+		}
+		
+		.my-icon {
+			font-size: 1.1em;
+			margin-right: 0.3em;
+		}
+		
+		p#scene-wrapper {
+			margin-bottom: 0;
+		}
+		
+		.youtube-container {
+			  position: relative; 
+			  padding-bottom: 56.25%; /* ratio 16x9 */
+			  height: 0; 
+			  overflow: hidden; 
+			  width: 100%;
+			  height: auto;
+			  margin: 1.2em 0;
+		}
+		.youtube-container iframe {
+			  position: absolute; 
+			  top: 0; 
+			  left: 0; 
+			  width: 100%; 
+			  height: 100%; 
+			  border: 0;
+		}
+
+		#collaborations {
+    text-align: center;
+}
+
+#collaborations img {
+    height: 75px;
+    margin: 1em 1.75em 1em 1.75em;
+}
+				
+	</style>
+	
+</head>
+
+<body>
+
+	<div id="content-wrapper">	
+	
+
+	
+	
+	<h1 class="project-name">QuadStream: A Quad-Based Scene Streaming Architecture for Novel Viewpoint Reconstruction</h1>
+	<h2 class="project-name">ACM Transactions on Graphics (SIGGRAPH Asia 2022)</h2>
+	
+	
+  	<p id="authors">
+		<a href="http://people.mpi-inf.mpg.de/~jhladky/">Jozef Hladky</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="https://research.nvidia.com/person/michael-stengel">Michael Stengel</a><sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="https://research.nvidia.com/person/nicholas-vining">Nicholas Vining</a><sup>2,4</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="https://www.cg.tuwien.ac.at/staff/BernhardKerbl">Bernhard Kerbl</a><sup>5</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="http://people.mpi-inf.mpg.de/~hpseidel/">Hans-Peter Seidel</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="https://www.markussteinberger.net/">Markus Steinberger</a><sup>3</sup>&nbsp;&nbsp;&nbsp;&nbsp;				
+	</p>
+	
+	<p id="affiliation">
+		<sup>1</sup> <a href="https://www.mpi-inf.mpg.de/">MPI Informatik</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<sup>2</sup> <a href="https://www.nvidia.com">NVIDIA</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<sup>3</sup> <a href="https://www.tugraz.at">TU Graz</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<sup>4</sup> <a href="https://www.ubc.ca">University of British Columbia</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<sup>5</sup> <a href="https://www.tuwien.at">TU Wien</a>		
+	</p>
+
+	<img src="images/logos_joined.png" alt="QuadStream visualized" id="teaser" />
+		
+	<div>
+		<img src="teaser.jpg" alt="QuadStream visualized" id="teaser" />
+		<p><i>
+			Capturing the scene appearance and geometry into a QuadStream data structure from multiple proxy views sampled from within a view cell.
+			Each proxy view contributes only yet-unseen QuadProxies (depicted as wireframe quads).
+			The QuadProxies are colored based on the proxy view that spawned them.
+			The resulting lightweight datastructure allows fast and accurate novel view reconstruction within the supported view cell.
+		</i></p>
+	</div>
+	  
+	<h2>Abstract</h2>
+	
+	<p>	Streaming rendered 3D content over a network to a thin client device, such as a phone or a VR/AR headset, brings high-fidelity graphics to platforms where it would not normally possible due to thermal, power, or cost constraints.
+		Streamed 3D content must be transmitted with a representation that is both robust to latency and potential network dropouts.
+		Transmitting a video stream and reprojecting to correct for changing viewpoints fails in the presence of disocclusion events; streaming scene geometry and performing high-quality rendering on the client is not possible on limited-power mobile GPUs.
+		To balance the competing goals of disocclusion robustness and minimal client workload, we introduce <i>QuadStream</i>, a new streaming content representation that reduces motion-to-photon latency by allowing clients to efficiently render novel views without artifacts caused by disocclusion events. 
+		Motivated by traditional macroblock approaches to video codec design, we decompose the scene seen from positions in a <i>view cell</i> into a series of <i>quad proxies</i>, or view-aligned quads from multiple views.
+		By operating on a rasterized G-Buffer, our approach is independent of the representation used for the scene itself; the resulting <i>QuadStream</i> is an approximate geometric representation of the scene that can be reconstructed by a thin client to render both the current view and nearby adjacent views.
+		Our technical contributions are an efficient parallel quad generation, merging, and packing strategy for proxy views covering potential client movement in a scene;
+		a packing and encoding strategy that allows masked quads with depth information to be transmitted as a frame-coherent stream;
+		and an efficient rendering approach for rendering our QuadStream representation into entirely novel views on thin clients.
+		We show that our approach achieves superior quality compared both to video data streaming methods, and to geometry-based streaming.
+	</p>
+	  
+	<h2>Materials</h2>
+
+	<ul>
+		<li><i class="my-icon icon-newspaper"></i><a href="https://media.githubusercontent.com/media/jozefhladky/webresources_qs/main/quadstream_main.pdf">Paper (Full Author's Copy) PDF</a> (55 MB)</li>
+		<li><i class="my-icon icon-newspaper"></i><a href="https://media.githubusercontent.com/media/jozefhladky/webresources_qs/main/quadstream_supplemental.pdf">Supplemental material PDF</a> (86 MB)</li>
+		<li><i class="my-icon icon-video"></i><a href="https://nextcloud.mpi-klsb.mpg.de/index.php/s/bofg2zNWA5dKZR3">Paper submission video MP4</a> (485 MB)</li>
+		<li><i class="my-icon icon-picture"></i><a href="https://nextcloud.mpi-klsb.mpg.de/index.php/s/f4FFaq3soNYJZxp">Presentation slides PPTX</a> (427 MB)</li>	
+	</ul>	
+	
+	<h2>Citation</h2>
+<pre><code>@article{10.1145/3550454.3555524,
+	author = {Hladky, Jozef and Stengel, Michael and Vining, Nicholas and Kerbl, Bernhard and
+		Seidel, Hans-Peter and Steinberger, Markus},
+	title = {QuadStream: A Quad-Based Scene Streaming Architecture for Novel Viewpoint 
+		Reconstruction},
+	year = {2022},
+	issue_date = {December 2022},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	volume = {41},
+	number = {6},
+	issn = {0730-0301},
+	url = {https://doi.org/10.1145/3550454.3555524},
+	doi = {10.1145/3550454.3555524},	
+	journal = {ACM Trans. Graph.},
+	month = {nov},
+	articleno = {233},
+	numpages = {13}	
+}
+</code></pre>
+	</p>
+	
+	</div>
+	
+	</br>	
+		
+		
+	</div>		  
+	
+	
+	
+</body>
 </html>
