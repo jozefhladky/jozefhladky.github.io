@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	
+<head>
+
+    <meta charset="utf-8">
+	
+	<title>Tessellated Shading Streaming</title>
+	
+	<script src="app/jquery-2.1.1.min.js"></script>
+	<script src="app/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="app/app.css" />
+	<link rel="stylesheet" type="text/css" href="css/fontello.css" />
+	<style type="text/css" media="screen">
+	
+	
+	
+	
+		body {
+			font-family: 'Open Sans', sans-serif;
+			color: #222;
+		}
+		
+		h1, h2, h3, h4, p#authors, p#affiliation {
+			font-family: 'Roboto', sans-serif;			
+		}
+		
+		a {
+			color: rgb(101, 124, 157);
+			text-decoration: none;
+		}
+				
+		a:hover {
+			text-decoration: underline;
+		}
+		
+		ul {
+			list-style-type: none;
+			padding-left: 1em;
+		}
+		
+		p {
+			text-align: justify
+		}
+		
+		code {
+			font-family: 'Roboto Mono', monospace;
+		}
+		
+		pre {
+			background-color: #f0f0f6;
+			padding: 1em;
+		}
+		
+		h1, h2, h3, h4 {
+			font-weight: 700;
+		}
+		
+		h2 {
+			margin-top: 1.5em;
+			margin-bottom: 0.5em;
+		}
+		
+		h3 {
+			margin-top: 1.0em;
+			margin-bottom: 0.5em;
+		}
+		
+		h4 {
+			margin-top: 1.0em;
+			margin-bottom: 0.2em;
+		}
+		
+		h1.project-name, p#authors {
+			margin-bottom: -0.5em;
+		}
+		
+		h1.project-name, h2.project-name, p#authors, p#affiliation, p#footer {
+			text-align:center;
+		}
+		
+		
+		h2.project-name {
+			font-weight: 300;
+		}
+		
+
+		.projectPageIcon {
+			margin: 0.2em 0.2em 0 1em !important;
+		}
+
+		.linkIcon {
+			float: none !important;
+			width: 1em;
+			height: 1em;
+		}
+
+		.pdfIcon {
+			margin: 0.2em 0.2em 0 0 !important;
+		}
+
+		.file-icon {
+			width: 2em;
+			height: 2em;
+			background-size: 2em 2em;
+			margin: auto 0;
+		}
+
+		.download-scene {
+			width:calc(50% - 0.5em);
+			margin-right: 1em;
+			margin-bottom: 1em;
+		}
+		
+		.download-scene:nth-child(even) {
+			margin-right: 0;
+		}
+				
+		div#content-wrapper {
+			width: 68%;
+			max-width: 56em;
+			margin: auto;
+		}
+		
+		img#teaser {
+			width: 100%;
+			margin-top: 1em;
+		}
+				
+		img.logo1 {
+			width: 40%;
+			display: inline;
+		}
+		img.logo2 {
+			width: 30%;
+			margin-left: 14em;
+			display: inline;
+		}
+		
+		.my-icon {
+			font-size: 1.1em;
+			margin-right: 0.3em;
+		}
+		
+		p#scene-wrapper {
+			margin-bottom: 0;
+		}
+		
+		.youtube-container {
+			  position: relative; 
+			  padding-bottom: 56.25%; /* ratio 16x9 */
+			  height: 0; 
+			  overflow: hidden; 
+			  width: 100%;
+			  height: auto;
+			  margin: 1.2em 0;
+		}
+		.youtube-container iframe {
+			  position: absolute; 
+			  top: 0; 
+			  left: 0; 
+			  width: 100%; 
+			  height: 100%; 
+			  border: 0;
+		}
+				
+	</style>
+	
+</head>
+
+<body>
+
+	<div id="content-wrapper">
+	
+	<div>
+		<img src="images/Logo_MPII.png" alt="Logo MPI" class="logo1" />
+		<img src="images/logo_TUGraz.png" alt="Logo TU Graz" class="logo2" />
+		
+	</div>
+	
+	<h1 class="project-name">Tessellated Shading Streaming</h1>
+	<h2 class="project-name">Computer Graphics Forum (Eurographics Symposium on Rendering (EGSR) 2019)</h2>
+	
+	
+  	<p id="authors">
+		<a href="http://people.mpi-inf.mpg.de/~jhladky/">Jozef Hladky</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="http://people.mpi-inf.mpg.de/~hpseidel/">Hans-Peter Seidel</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="https://www.markussteinberger.net/">Markus Steinberger</a><sup>2</sup>
+	</p>
+	
+	<p id="affiliation">
+		<sup>1</sup> <a href="https://www.mpi-inf.mpg.de/">MPI Informatik</a>&nbsp;&nbsp;&nbsp;&nbsp;<sup>2</sup> <a href="https://www.tugraz.at/home/">TU Graz</a>
+	</p>
+		
+	<div>
+		<img src="images/teaser_final.jpg" alt="Example PVS" id="teaser" />
+		<p><i>
+ We divide the scene geometry using triangle footprints to gather shading via Oversampling (blue) and L-packing (green) into a shading atlas. With this data, we construct near ground-truth novel views in under 1 ms on a desktop and with full 60 FPS on a smartphone.</i></p>
+	</div>
+	  
+	<h2>Abstract</h2>
+	
+	<p>	Presenting high-fidelity 3D content on compact portable devices with low computational power is challenging. Smartphones, tablets and head-mounted displays (HMDs) suffer from thermal and battery-life constraints and thus cannot match the render quality of desktop PCs and laptops. Streaming rendering enables to show high-quality content but can suffer from potentially high latency. We propose an approach to efficiently capture shading samples in object space and packing them into a texture.
+	Streaming this texture to the client, we support temporal frame up-sampling with high fidelity, low latency and high mobility. 
+	We introduce two novel sample distribution strategies and a novel triangle representation in the shading atlas space. Since such a system requires dynamic parallelism, we propose an implementation exploiting the power of hardware-accelerated tessellation stages. Our approach allows fast de-coding and rendering of extrapolated views on a client device by using hardware-accelerated interpolation between shading samples and a set of potentially visible geometry. A comparison to existing shading methods shows that our sample distributions allow better client shading quality than previous atlas streaming approaches and outperforms image-based methods in all relevant aspects.	
+	</p>
+	  
+	<h2>Materials</h2>
+
+	<ul>
+		<li><i class="my-icon icon-newspaper"></i><a href="files/TSS_Main.pdf">Paper (Full Author's Copy)</a> (52 MB)</li>
+		<li><i class="my-icon icon-newspaper"></i><a href="files/TSS_Supplementary.pdf">Supplemental material</a> (2.5 MB)</li>
+		<li><i class="my-icon icon-picture"></i><a href="https://docs.google.com/presentation/d/1JV-fxu0NG1FmusyuDfnnH0x2ASvxFoua/edit?usp=sharing&ouid=115715456961732806770&rtpof=true&sd=true">Slides</a> (380 MB)</li>
+	</ul>
+	
+	
+	<h2>Video</h2>
+	<p>
+	<iframe width="700" height="394" src="https://www.youtube-nocookie.com/embed/csONpz2uYto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<br />
+	</p>	
+	
+	<h2>Citation</h2>
+		
+	<p>
+		Jozef Hladky, Hans-Peter Seidel, Markus Steinberger<br/>
+		<b>Tessellated Shading Streaming</b><br/>
+		   To appear in: Computer Graphics Forum (Proc. Eurographics Symposium on Rendering 2019)<br/>
+<pre><code>@article{Hladky2019_TSS,
+	author	= {Jozef Hladky and Hans-Peter Seidel and Markus Steinberger},
+	title	= {Tessellated Shading Streaming},
+	journal	= {Computer Graphics Forum (Proc. Eurographics Symposium on Rendering 2019)},
+	year	= {2019},
+	ISSN = {1467-8659},
+	DOI = {10.1111/cgf.13780}
+}</code></pre>
+	</p>
+	
+	</div>
+	
+	</br>	
+	
+	</div>		  
+	
+	
+	
+</body>
+</html>
