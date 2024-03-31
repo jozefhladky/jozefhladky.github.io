@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	
+<head>
+
+    <meta charset="utf-8">
+	
+	<title>SnakeBinning</title>
+	
+	<script src="app/jquery-2.1.1.min.js"></script>
+	<script src="app/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="app/app.css" />
+	<link rel="stylesheet" type="text/css" href="css/fontello.css" />
+	<style type="text/css" media="screen">
+	
+	
+	
+	
+		body {
+			font-family: 'Open Sans', sans-serif;
+			color: #222;
+		}
+		
+		h1, h2, h3, h4, p#authors, p#affiliation {
+			font-family: 'Roboto', sans-serif;			
+		}
+		
+		a {
+			color: rgb(101, 124, 157);
+			text-decoration: none;
+		}
+				
+		a:hover {
+			text-decoration: underline;
+		}
+		
+		ul {
+			list-style-type: none;
+			padding-left: 1em;
+		}
+		
+		p {
+			text-align: justify
+		}
+		
+		code {
+			font-family: 'Roboto Mono', monospace;
+		}
+		
+		pre {
+			background-color: #f0f0f6;
+			padding: 1em;
+		}
+		
+		h1, h2, h3, h4 {
+			font-weight: 700;
+		}
+		
+		h2 {
+			margin-top: 1.5em;
+			margin-bottom: 0.5em;
+		}
+		
+		h3 {
+			margin-top: 1.0em;
+			margin-bottom: 0.5em;
+		}
+		
+		h4 {
+			margin-top: 1.0em;
+			margin-bottom: 0.2em;
+		}
+		
+		h1.project-name, p#authors {
+			margin-bottom: -0.5em;
+		}
+		
+		h1.project-name, h2.project-name, p#authors, p#affiliation, p#footer {
+			text-align:center;
+		}
+		
+		
+		h2.project-name {
+			font-weight: 300;
+		}
+		
+
+		.projectPageIcon {
+			margin: 0.2em 0.2em 0 1em !important;
+		}
+
+		.linkIcon {
+			float: none !important;
+			width: 1em;
+			height: 1em;
+		}
+
+		.pdfIcon {
+			margin: 0.2em 0.2em 0 0 !important;
+		}
+
+		.file-icon {
+			width: 2em;
+			height: 2em;
+			background-size: 2em 2em;
+			margin: auto 0;
+		}
+
+		.download-scene {
+			width:calc(50% - 0.5em);
+			margin-right: 1em;
+			margin-bottom: 1em;
+		}
+		
+		.download-scene:nth-child(even) {
+			margin-right: 0;
+		}
+				
+		div#content-wrapper {
+			width: 68%;
+			max-width: 56em;
+			margin: auto;
+		}
+		
+		img#teaser {
+			width: 100%;
+			margin-top: 1em;
+		}
+				
+		img.logo1 {
+			width: 40%;
+			display: inline;
+		}
+		img.logo2 {
+			width: 30%;
+			margin-left: 14em;
+			display: inline;
+		}
+		
+		.my-icon {
+			font-size: 1.1em;
+			margin-right: 0.3em;
+		}
+		
+		p#scene-wrapper {
+			margin-bottom: 0;
+		}
+		
+		.youtube-container {
+			  position: relative; 
+			  padding-bottom: 56.25%; /* ratio 16x9 */
+			  height: 0; 
+			  overflow: hidden; 
+			  width: 100%;
+			  height: auto;
+			  margin: 1.2em 0;
+		}
+		.youtube-container iframe {
+			  position: absolute; 
+			  top: 0; 
+			  left: 0; 
+			  width: 100%; 
+			  height: 100%; 
+			  border: 0;
+		}
+				
+	</style>
+	
+</head>
+
+<body>
+
+	<div id="content-wrapper">
+	
+	<div>
+		<img src="images/Logo_MPII.png" alt="Logo MPI" class="logo1" />
+		<img src="images/logo_TUGraz.png" alt="Logo TU Graz" class="logo2" />
+		
+	</div>
+	
+	<h1 class="project-name">SnakeBinning: Efficient Temporally Coherent Triangle Packing for Shading Streaming</h1>
+	<h2 class="project-name">Computer Graphics Forum (Proc. of Eurographics 2021)</h2>
+	
+	
+  	<p id="authors">
+		<a href="http://people.mpi-inf.mpg.de/~jhladky/">Jozef Hladky</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="http://people.mpi-inf.mpg.de/~hpseidel/">Hans-Peter Seidel</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="https://www.markussteinberger.net/">Markus Steinberger</a><sup>2</sup>
+	</p>
+	
+	<p id="affiliation">
+		<sup>1</sup> <a href="https://www.mpi-inf.mpg.de/">MPI Informatik</a>&nbsp;&nbsp;&nbsp;&nbsp;<sup>2</sup> <a href="https://www.tugraz.at/home/">TU Graz</a>
+	</p>
+		
+	<div>
+		<img src="images/teaser.png" alt="Example PVS" id="teaser" />
+		<p><i>
+			By rendering Potentially Visible Set (PVS) geometry shaded with our Shading Atlas (yellow background) we achieve novel view extrapolation with near ground-truth quality.
+			The scene triangles are assigned into bins, grouping triangles by similar screen-space footprint and preserving the primitive ordering.
+			The bins are structured into rectangular superblocks (colorful columns) to efficiently utilize the atlas space.
+			The gaps in the superblocks allow additional space for the bins to shrink/grow in order to increase temporal coherence.			
+			Both <a href="https://jozef.hladky.de/projects/TSS/">Tessellated Shading Streaming (TSS)</a> and <a href="https://www.tugraz.at/institute/icg/research/team-steinberger/research-projects/sas">Shading Atlas Streaming (SAS)</a> capture similar amount of shading atlas samples at slower speeds and achieve worse novel view quality (last column).				
+		</i></p>
+	</div>
+	  
+	<h2>Abstract</h2>
+	
+	<p>	
+		Streaming rendering, e.g., rendering in the cloud and streaming via a mobile connection, suffers from increased latency and unreliable connections.
+		High quality framerate upsampling can hide these issues, especially when capturing shading into an atlas and transmitting it alongside geometric information.
+		The captured shading information must consider triangle footprints and temporal stability to ensure efficient video encoding.
+		Previous approaches only consider either temporal stability or sample distributions, but none focuses on both.
+		With SnakeBinning, we present an efficient triangle packing approach that adjusts sample distributions and caters for temporal coherence. 
+		Using a multi-dimensional binning approach, we enforce tight packing among triangles while creating optimal sample distributions.
+		Our binning is built on top of hardware supported real-time rendering where bins are mapped to individual pixels in a virtual framebuffer.
+		Fragment shader interlock and atomic operations enforce global ordering of triangles within each bin, and thus temporal coherence according to the primitive order is achieved.
+		Resampling the bin distribution guarantees high occupancy among all bins and a dense atlas packing.
+		Shading samples are directly captured into the atlas using a rasterization pass, adjusting samples for perspective effects and creating a tight packing.
+		Comparison to previous atlas packing approaches shows that our approach is faster than previous work and achieves the best sample distributions while maintaining temporal coherence.
+		In this way, SnakeBinning achieves the highest rendering quality under equal atlas memory requirements.
+		At the same time, its temporal coherence ensures that we require equal or less bandwidth than previous state-of-the-art. 
+		As SnakeBinning outperforms previous approach in all relevant aspects, it is the preferred choice for texture-based streaming rendering.		
+	</p>
+	  
+	<h2>Materials</h2>
+
+	<ul>
+		<li><i class="my-icon icon-newspaper"></i><a href="https://raw.githubusercontent.com/jozefhladky/webresources_qs/main/SB_main.pdf">Paper (Full Author's Copy)</a> (69 MB)</li>		
+	</ul>
+	
+	
+	<h2>Video</h2>
+	<p>
+	<iframe width="700" height="394" src="https://www.youtube-nocookie.com/embed/todo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<br />
+	</p>	
+	
+	<h2>Citation</h2>
+		
+	<p>
+		Jozef Hladky, Hans-Peter Seidel, Markus Steinberger<br/>
+		<b>SnakeBinning: Efficient Temporally Coherent Triangle Packing for Shading Streaming</b><br/>
+		   Computer Graphics (Proc. Eurographics 2021)<br/>
+<pre><code>@article{Hladky2021_SB,	
+	title	= {SnakeBinning: Efficient Temporally Coherent Triangle Packing 
+		for Shading Streaming},
+	author = {Hladky, Jozef and Seidel, Hans-Peter and Steinberger, Markus},
+	year = {2021},
+	publisher = {The Eurographics Association and John Wiley & Sons Ltd.},
+	ISSN = {1467-8659},
+	DOI = {10.1111/cgf.142648}	
+}</code></pre>
+	</p>
+	
+	</div>
+	
+	</br>	
+	
+	</div>		  
+	
+	
+	
+</body>
+</html>
