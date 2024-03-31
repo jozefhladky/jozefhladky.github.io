@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	
+<head>
+
+    <meta charset="utf-8">
+	
+	<title>The Camera Offset Space</title>
+	
+	<script src="app/jquery-2.1.1.min.js"></script>
+	<script src="app/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="app/app.css" />
+	<link rel="stylesheet" type="text/css" href="css/fontello.css" />
+	<style type="text/css" media="screen">
+	
+	
+	
+	
+		body {
+			font-family: 'Open Sans', sans-serif;
+			color: #222;
+		}
+		
+		h1, h2, h3, h4, p#authors, p#affiliation {
+			font-family: 'Roboto', sans-serif;			
+		}
+		
+		a {
+			color: rgb(101, 124, 157);
+			text-decoration: none;
+		}
+				
+		a:hover {
+			text-decoration: underline;
+		}
+		
+		ul {
+			list-style-type: none;
+			padding-left: 1em;
+		}
+		
+		p {
+			text-align: justify
+		}
+		
+		code {
+			font-family: 'Roboto Mono', monospace;
+		}
+		
+		pre {
+			background-color: #f0f0f6;
+			padding: 1em;
+		}
+		
+		h1, h2, h3, h4 {
+			font-weight: 700;
+		}
+		
+		h2 {
+			margin-top: 1.5em;
+			margin-bottom: 0.5em;
+		}
+		
+		h3 {
+			margin-top: 1.0em;
+			margin-bottom: 0.5em;
+		}
+		
+		h4 {
+			margin-top: 1.0em;
+			margin-bottom: 0.2em;
+		}
+		
+		h1.project-name, p#authors {
+			margin-bottom: -0.5em;
+		}
+		
+		h1.project-name, h2.project-name, p#authors, p#affiliation, p#footer {
+			text-align:center;
+		}
+		
+		
+		h2.project-name {
+			font-weight: 300;
+		}
+		
+
+		.projectPageIcon {
+			margin: 0.2em 0.2em 0 1em !important;
+		}
+
+		.linkIcon {
+			float: none !important;
+			width: 1em;
+			height: 1em;
+		}
+
+		.pdfIcon {
+			margin: 0.2em 0.2em 0 0 !important;
+		}
+
+		.file-icon {
+			width: 2em;
+			height: 2em;
+			background-size: 2em 2em;
+			margin: auto 0;
+		}
+
+		.download-scene {
+			width:calc(50% - 0.5em);
+			margin-right: 1em;
+			margin-bottom: 1em;
+		}
+		
+		.download-scene:nth-child(even) {
+			margin-right: 0;
+		}
+				
+		div#content-wrapper {
+			width: 68%;
+			max-width: 56em;
+			margin: auto;
+		}
+		
+		img#teaser {
+			width: 100%;
+			margin-top: 1em;
+		}
+				
+		img.logo1 {
+			width: 40%;
+			display: inline;
+		}
+		img.logo2 {
+			width: 30%;
+			margin-left: 14em;
+			display: inline;
+		}
+		
+		.my-icon {
+			font-size: 1.1em;
+			margin-right: 0.3em;
+		}
+		
+		p#scene-wrapper {
+			margin-bottom: 0;
+		}
+		
+		.youtube-container {
+			  position: relative; 
+			  padding-bottom: 56.25%; /* ratio 16x9 */
+			  height: 0; 
+			  overflow: hidden; 
+			  width: 100%;
+			  height: auto;
+			  margin: 1.2em 0;
+		}
+		.youtube-container iframe {
+			  position: absolute; 
+			  top: 0; 
+			  left: 0; 
+			  width: 100%; 
+			  height: 100%; 
+			  border: 0;
+		}
+				
+	</style>
+	
+</head>
+
+<body>
+
+	<div id="content-wrapper">
+	
+	<div>
+		<img src="images/Logo_MPII.png" alt="Logo MPI" class="logo1" />
+		<img src="images/logo_TUGraz.png" alt="Logo TU Graz" class="logo2" />
+		
+	</div>
+	
+	<h1 class="project-name">The Camera Offset Space: Real-time Potentially Visible Set Computations for Streaming Rendering</h1>
+	<h2 class="project-name">ACM Transactions on Graphics (SIGGRAPH Asia 2019)</h2>
+	
+	
+  	<p id="authors">
+		<a href="http://people.mpi-inf.mpg.de/~jhladky/">Jozef Hladky</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="http://people.mpi-inf.mpg.de/~hpseidel/">Hans-Peter Seidel</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="https://www.markussteinberger.net/">Markus Steinberger</a><sup>2</sup>
+	</p>
+	
+	<p id="affiliation">
+		<sup>1</sup> <a href="https://www.mpi-inf.mpg.de/">MPI Informatik</a>&nbsp;&nbsp;&nbsp;&nbsp;<sup>2</sup> <a href="https://www.tugraz.at/home/">TU Graz</a>
+	</p>
+		
+	<div>
+		<img src="images/teaser_final.jpg" alt="Example PVS" id="teaser" />
+		<p><i>A birds-eye view on a full 360 degree potentially visible set (PVS) computed for a region around the camera from four reference views (in the corners) in an outdoor scene. Geometry labeled as invisible shown in magenta color, the red dot shows camera position in the scene. To construct the PVS, we collect all triangles that can cover a fragment in a per-fragment list and resolve the visibility in the proposed camera offset space. Each reference view contains a corner inset depicting its corresponding PVS---starting from top right, clockwise: North, East, South and West. The final PVS is constructed by joining these 4 sets. Novel views rendered with the PVS for view points around the reference location are complete and hole free.</i></p>
+	</div>
+	  
+	<h2>Abstract</h2>
+	
+	<p>	Potential visibility has historically always been of importance when rendering performance was insufficient.
+	With the rise of virtual reality, rendering power may once again be insufficient, e.g., for integrated graphics of head-mounted displays.
+	To tackle the issue of efficient potential visibility computations on modern graphics hardware, we introduce the camera offset space (COS).
+	Opposite to how traditional visibility computations work---where one determines which pixels are covered by an object under all potential viewpoints---the COS describes under which camera movement a sample location is covered by a triangle.
+	In this way, the COS opens up a new set of possibilities for visibility computations.
+	By evaluating the pairwise relations of triangles in the COS, we show how to efficiently determine occluded triangles.
+	Constructing the COS for all pixels of a rendered view leads to a complete potentially visible set (PVS) for complex scenes.
+	By fusing triangles to larger occluders, including locations between pixel centers, and considering camera rotations, we describe an exact PVS algorithm that includes all viewing directions inside a view cell.
+	Implementing the COS is a combination of real-time rendering and compute steps. We provide the first GPU PVS implementation that works without preprocessing, on-the-fly, on unconnected triangles.
+	This opens the door to a new approach of rendering for virtual reality head-mounted displays and server-client settings for streaming 3D applications such as video games.
+	</p>
+	  
+	<h2>Materials</h2>
+
+	<ul>
+		<li><i class="my-icon icon-newspaper"></i><a href="files/COS_Main.pdf">Paper (Full Author's Copy)</a> (25 MB)</li>
+		<li><i class="my-icon icon-newspaper"></i><a href="files/COS_Supplementary.pdf">Supplemental material</a> (16 MB)</li>
+	<!--	<li><i class="my-icon icon-picture"></i><a href="slides.pptx">Slides</a> (80 MB)</li>-->
+	</ul>
+	
+	
+	<h2>Video</h2>
+	<p>
+	<iframe width="700" height="394" src="https://www.youtube-nocookie.com/embed/N29ysJ6wMaI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<br />
+	</p>	
+	
+	<h2>Citation</h2>
+		
+	<p>
+		Jozef Hladky, Hans-Peter Seidel, Markus Steinberger<br/>
+		<b>The Camera Offset Space: Real-time Potentially Visible Set Computations for Streaming Rendering</b><br/>
+		   To appear in: ACM Transactions on Graphics (Proc. SIGGRAPH Asia 2019)<br/>
+<pre><code>@article{Hladky2019_COS,
+	author	= {Jozef Hladky and Hans-Peter Seidel and Markus Steinberger},
+	title	= {The Camera Offset Space: Real-time 
+		Potentially Visible Set Computations for Streaming Rendering},
+	journal	= {ACM Transactions on Graphics (Proc. SIGGRAPH Asia 2019)},
+	year	= {2019},
+	volume = {38},
+	number = {6},
+	article = {231},
+	doi = {10.1145/3355089.3356530}
+}</code></pre>
+	</p>
+	
+	</div>
+	
+	</br>	
+	
+	</div>		  
+	
+	
+	
+</body>
+</html>
